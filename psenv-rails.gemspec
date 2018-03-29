@@ -1,5 +1,5 @@
 
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "psenv/version"
 
@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrew Tomaka"]
   spec.email         = ["atomaka@gmail.com"]
 
-  spec.summary       = %q{Load AWS SSM Parameter Store values into your Rails environment.}
+  spec.summary       = "Load AWS SSM Parameter Store values into your Rails environment."
   spec.homepage      = "https://github.com/atomaka/psenv"
   spec.license       = "MIT"
 

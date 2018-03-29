@@ -7,9 +7,9 @@ end
 
 namespace "psenv-rails" do
   class ParameterStoreEnvRailsGemHelper < Bundler::GemHelper
-    def guard_already_tagged; end # noop
+    def guard_already_tagged; end
 
-    def tag_version; end # noop
+    def tag_version; end
   end
 
   ParameterStoreEnvRailsGemHelper.install_tasks name: "psenv-rails"
@@ -21,4 +21,4 @@ task release: ["psenv:release", "psenv-rails:release"]
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+task default: :spec

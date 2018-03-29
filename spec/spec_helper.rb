@@ -1,5 +1,5 @@
 require "bundler/setup"
-require 'webmock/rspec'
+require "webmock/rspec"
 require "psenv"
 
 WebMock.disable_net_connect!(allow_localhost: true)
