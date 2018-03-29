@@ -6,15 +6,15 @@ if defined?(Rake.application)
 end
 
 module Psenv
-	class Railtie < Rails::Railtie
-		def load
-			Psenv.load
-		end
+  class Railtie < Rails::Railtie
+    def load
+      Psenv.load
+    end
 
-		def self.load
-			instance.load
-		end
+    def self.load
+      instance.load
+    end
 
     config.before_configuration { load }
-	end
+  end
 end

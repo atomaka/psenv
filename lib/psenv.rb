@@ -1,3 +1,5 @@
+require "psenv/environment"
+require "psenv/retriever"
 require "psenv/version"
 
 require "aws-sdk-ssm"
@@ -5,19 +7,17 @@ require "aws-sdk-ssm"
 module Psenv
   module_function
 
-  def load
-    if ENV["PARAMETER_STORE_PATH"] != nil
-      ssm = Aws::SSM::Client.new
+  def load(*paths)
+    paths.unshift(ENV["PARAMETER_STORE_PATH"]) if ENV["PARAMETER_STORE_PATH"]
+    Environment.create(*paths.map { |path| retrieve_variables(path) }).apply
+  end
 
-      ssm.
-        get_parameters_by_path(
-          path: ENV["PARAMETER_STORE_PATH"],
-          with_decryption: true,
-        ).
-        parameters.
-        each do |param|
-          ENV.store(param.name.split("/").last, param.value)
-        end
-    end
+  def overload(*paths)
+    paths.unshift(ENV["PARAMETER_STORE_PATH"]) if ENV["PARAMETER_STORE_PATH"]
+    Environment.create(*paths.map { |path| retrieve_variables(path) }).apply!
+  end
+
+  def retrieve_variables(path)
+    Retriever.new(path).call
   end
 end
