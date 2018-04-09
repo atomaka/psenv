@@ -9,12 +9,12 @@ module Psenv
 
   def load(*paths)
     paths.unshift(ENV["PARAMETER_STORE_PATH"]) if ENV["PARAMETER_STORE_PATH"]
-    Environment.create(*paths.map { |path| retrieve_variables(path) }).apply
+    Environment.new(*paths.map { |path| retrieve_variables(path) }).apply
   end
 
   def overload(*paths)
     paths.unshift(ENV["PARAMETER_STORE_PATH"]) if ENV["PARAMETER_STORE_PATH"]
-    Environment.create(*paths.map { |path| retrieve_variables(path) }).apply!
+    Environment.new(*paths.map { |path| retrieve_variables(path) }).apply!
   end
 
   def retrieve_variables(path)

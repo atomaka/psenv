@@ -1,15 +1,17 @@
 module Psenv
-  class Environment < Hash
+  class Environment
+    def initialize(*variables)
+      @variables = variables.reverse.reduce({}, :merge)
+    end
+
     def apply
-      each { |k, v| ENV.store(k.to_s, v) unless ENV.has_key?(k.to_s) }
+      @variables.each do |k, v|
+        ENV.store(k.to_s, v) unless ENV.has_key?(k.to_s)
+      end
     end
 
     def apply!
-      each { |k, v| ENV.store(k.to_s, v) }
-    end
-
-    def self.create(*variables)
-      Environment[variables.reverse.reduce({}, :merge)]
+      @variables.each { |k, v| ENV.store(k.to_s, v) }
     end
   end
 end

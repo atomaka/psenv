@@ -19,7 +19,7 @@ RSpec.describe Psenv do
     allow(retriever1).to receive(:call) { env_variables }
     allow(retriever2).to receive(:call) { arg_variables[0] }
     allow(retriever3).to receive(:call) { arg_variables[1] }
-    allow(Psenv::Environment).to receive(:create) { environment }
+    allow(Psenv::Environment).to receive(:new) { environment }
     allow(environment).to receive(:apply)
     allow(environment).to receive(:apply!)
 
@@ -43,7 +43,7 @@ RSpec.describe Psenv do
 
       it "creates the environment with the correct variables" do
         expect(Psenv::Environment).
-          to have_received(:create).with(env_variables)
+          to have_received(:new).with(env_variables)
       end
 
       it "applies the environment" do
@@ -62,7 +62,7 @@ RSpec.describe Psenv do
 
       it "creates the environment with the correct variables" do
         expect(Psenv::Environment).
-          to have_received(:create).with(*arg_variables)
+          to have_received(:new).with(*arg_variables)
       end
 
       it "apples the environment" do
@@ -84,7 +84,7 @@ RSpec.describe Psenv do
 
       it "creates the environment with the correct variables" do
         expect(Psenv::Environment).
-          to have_received(:create).with(env_variables)
+          to have_received(:new).with(env_variables)
       end
 
       it "applies the environment" do
@@ -103,7 +103,7 @@ RSpec.describe Psenv do
 
       it "creates the environment with the correct variables" do
         expect(Psenv::Environment).
-          to have_received(:create).with(*arg_variables)
+          to have_received(:new).with(*arg_variables)
       end
 
       it "apples the environment" do

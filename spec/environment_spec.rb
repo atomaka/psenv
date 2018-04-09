@@ -4,27 +4,18 @@ RSpec.describe Psenv::Environment do
   let(:environment1) { { A: "1", B: "1" } }
   let(:environment2) { { B: "2", C: "2" } }
 
-  context ".create" do
-    subject { Psenv::Environment.create(environment1, environment2) }
+  context ".new" do
+    subject { Psenv::Environment.new(environment1, environment2) }
 
     it "returns an environment object" do
       expect(subject).to be_kind_of(Psenv::Environment)
-    end
-
-    it "is also a hash" do
-      expect(subject).to be_kind_of(Hash)
-    end
-
-    it "creates the correct environment" do
-      expected = { A: "1", B: "1", C: "2" }
-      expect(subject).to eq(expected)
     end
   end
 
   context "#apply" do
     before(:each) do
       ENV.store("A", "0")
-      environment = Psenv::Environment.create(environment1, environment2)
+      environment = Psenv::Environment.new(environment1, environment2)
       environment.apply
     end
 
@@ -44,7 +35,7 @@ RSpec.describe Psenv::Environment do
   context "#apply!" do
     before(:each) do
       ENV.store("A", "0")
-      environment = Psenv::Environment.create(environment1, environment2)
+      environment = Psenv::Environment.new(environment1, environment2)
       environment.apply!
     end
 
