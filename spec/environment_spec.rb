@@ -49,6 +49,6 @@ RSpec.describe Psenv::Environment do
 
     it "applies duplicates based on the first provided" do
       expect(ENV["B"]).to eq("1")
-    end 
+    end
   end
 end
