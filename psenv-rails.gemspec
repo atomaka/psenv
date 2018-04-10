@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "psenv", Psenv::VERSION
-  spec.add_dependency "railties", ">= 3.2", "< 5.2"
+  spec.add_dependency "railties", ">= 3.2", "< 5.3"
 end
