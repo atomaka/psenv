@@ -2,12 +2,20 @@ sudo: false
 cache: bundler
 language: ruby
 rvm:
-  - 2.4.2
+  - 2.5
+  - 2.4
+  - 2.3
 before_install: gem install bundler -v 1.16.1
+
+stages:
+  - analyze
+  - test
+  - deploy
 
 jobs:
   include:
-    - stage: analyze
-      script: bundle exec rubocop
     - stage: test
       script: bundle exec rspec
+    - stage: analyze
+      script: bundle exec rubocop
+      rvm: 2.5
