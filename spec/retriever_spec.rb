@@ -41,7 +41,7 @@ RSpec.describe Psenv::Retriever do
 
     subject { Psenv::Retriever.new("/psenv/test").call }
 
-    context "with a successful request" do
+    context "with a single page request" do
       before(:each) do
         allow(ssm).to receive(:get_parameters_by_path) {
           OpenStruct.new(
@@ -57,6 +57,34 @@ RSpec.describe Psenv::Retriever do
 
       it "returns the parsed parameters" do
         expect(subject).to eq("API_KEY" => "value")
+      end
+    end
+
+    context "with multiple pages" do
+      before(:each) do
+        allow(ssm).to receive(:get_parameters_by_path) {
+          OpenStruct.new(
+            parameters: [{
+              name: "/psenv/test/API_KEY",
+              value: "value",
+              type: "String",
+              version: 1,
+            }],
+            next_page?: true,
+            next_page: OpenStruct.new(
+              parameters: [{
+                name: "/psenv/test/CLIENT_KEY",
+                value: "value",
+                type: "String",
+                version: 1,
+              }],
+            ),
+          )
+        }
+      end
+
+      it "returns both parameters" do
+        expect(subject).to eq("API_KEY" => "value", "CLIENT_KEY" => "value")
       end
     end
 

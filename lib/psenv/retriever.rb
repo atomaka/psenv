@@ -38,9 +38,16 @@ module Psenv
     end
 
     def parameters
-      ssm.
-        get_parameters_by_path(path: @path, with_decryption: true).
-        parameters
+      parameters = []
+      response = ssm.get_parameters_by_path(path: @path, with_decryption: true)
+      parameters << response.parameters
+
+      while response.next_page?
+        response = response.next_page
+        parameters << response.parameters
+      end
+
+      parameters.flatten
     rescue StandardError => error
       raise RetrieveError, error
     end
