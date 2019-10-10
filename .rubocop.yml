@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - db/schema.rb
     - vendor/**/*
+    - spec/rails/**/*
 
 Metrics/LineLength:
   Description: 'Limit lines to 80 characters.'
