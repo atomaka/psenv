@@ -34,3 +34,23 @@ jobs:
         gem install bundler -v 1.16
         bundle install --jobs 4 --retry 3
         bundle exec rspec
+
+  rails:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Test gem in Rails application
+      run: |
+        cd spec/rails
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rails test
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: us-east-2
+        PARAMETER_STORE_PATH: /psenv/test/
