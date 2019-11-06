@@ -23,7 +23,7 @@ And then execute:
 Set the `PARAMETER_STORE_PATH` environment variable with the AWS Parameter
 Store path that you wish to load.
 
-### Spring preloader
+#### Spring preloader
 
 The Spring preloader does not detect environment variable changes as
 application changes.  This means that when using Spring, new or changed
