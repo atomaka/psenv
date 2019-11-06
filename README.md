@@ -4,7 +4,7 @@
 
 Shim to load environment variables from [AWS Systems Manager Parameter Store](https://aws.amazon.com/systems-manager/features/#Parameter_Store) into ENV.
 
-Psenv currently heavily borrows from [Dotenv](https://github.com/bkeepers/dotenv), mainly because I use it in roughly every project so it made since for the APIs to match.
+Psenv currently heavily borrows from [Dotenv](https://github.com/bkeepers/dotenv), mainly because I use it in roughly every project so it made sense for the APIs to match.
 
 ## Installation
 
