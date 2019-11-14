@@ -4,7 +4,7 @@
 
 Shim to load environment variables from [AWS Systems Manager Parameter Store](https://aws.amazon.com/systems-manager/features/#Parameter_Store) into ENV.
 
-Psenv currently heavily borrows from [Dotenv](https://github.com/bkeepers/dotenv), mainly because I use it in roughly every project so it made since for the APIs to match.
+Psenv currently heavily borrows from [Dotenv](https://github.com/bkeepers/dotenv), mainly because I use it in roughly every project so it made sense for the APIs to match.
 
 ## Installation
 
@@ -22,6 +22,26 @@ And then execute:
 
 Set the `PARAMETER_STORE_PATH` environment variable with the AWS Parameter
 Store path that you wish to load.
+
+#### Spring preloader
+
+The Spring preloader does not detect environment variable changes as
+application changes.  This means that when using Spring, new or changed
+environment variables from AWS SSM Parameter Store will not become available
+immediately.  This also applies to any change to `PARAMETER_STORE_PATH`.
+
+There are two work-arounds.  You can force Spring to restart by killing it with
+`bundle exec spring stop`.
+
+Alternatively, you can update your Spring configuration to reload variables
+using Psenv after the process forks. To do this, add the following configuration
+to `config/spring.rb`:
+
+```
+Spring.after_fork do
+  Psenv.load
+end
+```
 
 ### Plain Ruby
 
