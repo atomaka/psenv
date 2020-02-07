@@ -13,7 +13,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Build and test with Rake
       run: |
-        gem install bundler -v 1.16
+        gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rubocop
 
@@ -31,7 +31,7 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
     - name: Build and test with Rake
       run: |
-        gem install bundler -v 1.16
+        gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec
 
