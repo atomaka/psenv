@@ -1,8 +1,8 @@
 require "spec_helper"
 
 RSpec.describe Psenv::Environment do
-  let(:environment1) { { A: "1", B: "1" } }
-  let(:environment2) { { B: "2", C: "2" } }
+  let(:environment1) { {A: "1", B: "1"} }
+  let(:environment2) { {B: "2", C: "2"} }
 
   context ".new" do
     subject { Psenv::Environment.new(environment1, environment2) }

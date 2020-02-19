@@ -21,9 +21,9 @@ module Psenv
 
     def call
       Hash[
-        parameters.
-          map { |parameter| Parameter.new(parameter) }.
-          map { |parameter| [parameter.name, parameter.value] }
+        parameters
+          .map { |parameter| Parameter.new(parameter) }
+          .map { |parameter| [parameter.name, parameter.value] }
       ]
     end
 
@@ -48,7 +48,7 @@ module Psenv
       end
 
       parameters.flatten
-    rescue StandardError => error
+    rescue => error
       raise RetrieveError, error
     end
   end
