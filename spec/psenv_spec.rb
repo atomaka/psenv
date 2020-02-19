@@ -3,9 +3,9 @@ require "spec_helper"
 RSpec.describe Psenv do
   let(:env_path) { "/env/" }
   let(:arg_paths) { ["/arg1/", "/arg2"] }
-  let(:env_variables) { { TEST: "env", ANOTHER: "env" } }
+  let(:env_variables) { {TEST: "env", ANOTHER: "env"} }
   let(:arg_variables) do
-    [{ ONE: "arg1", TWO: "arg1" }, { TWO: "arg2", THREE: "arg2" }]
+    [{ONE: "arg1", TWO: "arg1"}, {TWO: "arg2", THREE: "arg2"}]
   end
   let(:retriever1) { double(:retriever) }
   let(:retriever2) { double(:retriever) }
@@ -42,8 +42,8 @@ RSpec.describe Psenv do
       end
 
       it "creates the environment with the correct variables" do
-        expect(Psenv::Environment).
-          to have_received(:new).with(env_variables)
+        expect(Psenv::Environment)
+          .to have_received(:new).with(env_variables)
       end
 
       it "applies the environment" do
@@ -61,8 +61,8 @@ RSpec.describe Psenv do
       end
 
       it "creates the environment with the correct variables" do
-        expect(Psenv::Environment).
-          to have_received(:new).with(*arg_variables)
+        expect(Psenv::Environment)
+          .to have_received(:new).with(*arg_variables)
       end
 
       it "apples the environment" do
@@ -83,8 +83,8 @@ RSpec.describe Psenv do
       end
 
       it "creates the environment with the correct variables" do
-        expect(Psenv::Environment).
-          to have_received(:new).with(env_variables)
+        expect(Psenv::Environment)
+          .to have_received(:new).with(env_variables)
       end
 
       it "applies the environment" do
@@ -102,8 +102,8 @@ RSpec.describe Psenv do
       end
 
       it "creates the environment with the correct variables" do
-        expect(Psenv::Environment).
-          to have_received(:new).with(*arg_variables)
+        expect(Psenv::Environment)
+          .to have_received(:new).with(*arg_variables)
       end
 
       it "apples the environment" do

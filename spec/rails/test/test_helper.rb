@@ -1,7 +1,7 @@
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
-require 'minitest/spec'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
+require "minitest/spec"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

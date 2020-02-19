@@ -15,7 +15,7 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rubocop
+        bundle exec standardrb
 
   test:
     runs-on: ubuntu-latest

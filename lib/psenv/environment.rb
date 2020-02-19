@@ -6,7 +6,7 @@ module Psenv
 
     def apply
       @variables.each do |k, v|
-        ENV.store(k.to_s, v) unless ENV.has_key?(k.to_s)
+        ENV.store(k.to_s, v) unless ENV.key?(k.to_s)
       end
     end
 
