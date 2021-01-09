@@ -42,7 +42,7 @@ jobs:
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: [2.7, 3.0]
     - name: Test gem in Rails application
       run: |
         cd spec/rails
