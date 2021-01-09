@@ -37,12 +37,15 @@ jobs:
 
   rails:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby_version: [2.4, 2.5, 2.6, 2.7, 3.0]
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.7
+    - name: Set up Ruby ${{ matrix.ruby_version }}
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: [2.7, 3.0]
+        ruby-version: ${{ matrix.ruby_version }}
     - name: Test gem in Rails application
       run: |
         cd spec/rails
