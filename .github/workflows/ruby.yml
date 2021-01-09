@@ -8,9 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.7
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 2.7
     - name: Build and test with Rake
       run: |
         gem install bundler
@@ -21,12 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby_version: [2.4.x, 2.5.x, 2.6.x, 2.7.x, 3.0.x]
+        ruby_version: [2.4, 2.5, 2.6, 2.7, 3.0]
 
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby ${{ matrix.ruby_version }}
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby_version }}
     - name: Build and test with Rake
@@ -40,9 +40,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.7
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: 2.7
     - name: Test gem in Rails application
       run: |
         cd spec/rails
