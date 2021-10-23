@@ -20,11 +20,10 @@ module Psenv
     end
 
     def call
-      Hash[
-        parameters
-          .map { |parameter| Parameter.new(parameter) }
-          .map { |parameter| [parameter.name, parameter.value] }
-      ]
+      parameters
+        .map { |parameter| Parameter.new(parameter) }
+        .map { |parameter| [parameter.name, parameter.value] }
+        .to_h
     end
 
     def self.call(path)

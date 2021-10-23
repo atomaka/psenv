@@ -9,7 +9,7 @@ RSpec.describe Psenv::Parameter do
         name: "/psenv/test/VARIABLE",
         value: "value",
         type: "String",
-        version: 1,
+        version: 1
       }
     end
     subject { Psenv::Parameter.new(parameter) }
@@ -49,8 +49,8 @@ RSpec.describe Psenv::Retriever do
               name: "/psenv/test/API_KEY",
               value: "value",
               type: "String",
-              version: 1,
-            }],
+              version: 1
+            }]
           )
         }
       end
@@ -68,7 +68,7 @@ RSpec.describe Psenv::Retriever do
               name: "/psenv/test/API_KEY",
               value: "value",
               type: "String",
-              version: 1,
+              version: 1
             }],
             next_page?: true,
             next_page: OpenStruct.new(
@@ -76,9 +76,9 @@ RSpec.describe Psenv::Retriever do
                 name: "/psenv/test/CLIENT_KEY",
                 value: "value",
                 type: "String",
-                version: 1,
-              }],
-            ),
+                version: 1
+              }]
+            )
           )
         }
       end
