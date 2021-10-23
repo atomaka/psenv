@@ -2,19 +2,19 @@ require "bundler/gem_helper"
 require "rspec/core/rake_task"
 require "rubocop/rake_task"
 
+class ParameterStoreEnvRailsGemHelper < Bundler::GemHelper
+  def guard_already_tagged
+  end
+
+  def tag_version
+  end
+end
+
 namespace "psenv" do
   Bundler::GemHelper.install_tasks name: "psenv"
 end
 
 namespace "psenv-rails" do
-  class ParameterStoreEnvRailsGemHelper < Bundler::GemHelper
-    def guard_already_tagged
-    end
-
-    def tag_version
-    end
-  end
-
   ParameterStoreEnvRailsGemHelper.install_tasks name: "psenv-rails"
 end
 
